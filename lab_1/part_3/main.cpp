@@ -3,6 +3,7 @@
 #ifdef _WIN32_C_LIB
     #include <cstdio>
 #endif //WIN32
+#include <cstdlib>
 
 #define get_size_array(array) sizeof(array) / sizeof(array[0])
 using namespace std;
@@ -16,7 +17,7 @@ int main(int argc, char *argv[])
 #ifdef _WIN32_C_LIB
     getchar();
 #endif //WIN32
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 void part_3(void){

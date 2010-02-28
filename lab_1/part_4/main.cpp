@@ -11,7 +11,9 @@ int main(void) {
 #ifdef _WIN32_C_LIB
     getchar();
 #endif //WIN32
+    return EXIT_SUCCESS;
 }
+
 
 void read_textfile_to_vector(char filename[]){
     FILE * f;

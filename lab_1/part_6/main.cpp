@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 #ifdef _WIN32_C_LIB
     getchar();
 #endif //WIN32
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 
