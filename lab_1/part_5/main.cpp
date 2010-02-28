@@ -2,11 +2,23 @@
 #include <iostream>
 #include <vector>
 #include <iterator>
-#define DEBUG false
+#define DEBUG true
 using namespace std;
+
+void part_5(void);
 
 int main(int argc, char *argv[])
 {
+
+    part_5();
+
+#ifdef _WIN32_C_LIB
+    getchar();
+#endif //WIN32
+    return 0;
+}
+
+void part_5(void){
     vector<int> vec;
     cout << "Enter any number. 0 - exit\n";
     if (!DEBUG){
@@ -39,7 +51,9 @@ int main(int argc, char *argv[])
         //cout << *iter  << "\n";
         if (*iter % 2 == 0){
             iter = vec.erase(iter);
-            iter--;
+#ifndef _WIN32_C_LIB // in VS 2005 exception
+            iter--; // for correctly remove all digit division on1 2
+#endif //WIN32
         }
     }
 
@@ -49,6 +63,7 @@ int main(int argc, char *argv[])
             if (*iter % 3 == 0){
                 for (_i=0; _i < 3; ++_i){
                     iter = vec.insert(iter+1, 1);
+                    
                 }
             }
         }
@@ -59,6 +74,4 @@ int main(int argc, char *argv[])
     }
 
     cout << endl;
-
-    return 0;
 }

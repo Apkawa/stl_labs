@@ -16,6 +16,9 @@ void part_6(void);
 int main(int argc, char *argv[])
 {
     part_6();
+#ifdef _WIN32_C_LIB
+    getchar();
+#endif //WIN32
     return 0;
 }
 
@@ -23,17 +26,19 @@ int main(int argc, char *argv[])
 void part_6(void){
     int size_array[] = {5, 10, 25, 50, 100};
     int i;
-    for (i=0; i< get_size_array(size_array); ++i){
+    for (i = 0; i < get_size_array(size_array); ++i){
         cout << "array size: "<< size_array[i]<< endl;
-        double da[size_array[i]];
+        double *da;
+        da = (double *) calloc(size_array[i], sizeof(double));
         full_random(da, size_array[i]);
-        vector<double>v(da, da+get_size_array(da));
+        vector<double>v(da, da+size_array[i]);
         cout <<"unsorted vector" << endl;
         print_vector<double>(v);
         cout << endl;
         cout <<"sorted vector" << endl;
         print_vector<double>(sort_vector<double>(v));
         cout << endl;
+        free(da);
     }
 }
 template <typename T> void print_array(T array[], int size) {
@@ -53,8 +58,6 @@ template <typename T> void print_vector(vector<T> v){
         cout << v[i] <<", ";
     }
     cout << "]"<< endl;
-
-
 }
 
 

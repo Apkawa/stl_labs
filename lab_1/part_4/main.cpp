@@ -8,35 +8,36 @@ using namespace std;
 int main(void) {
 
     read_textfile_to_vector("input.txt");
-    //cout << sizeof(res)/sizeof(res[0]);
-
+#ifdef _WIN32_C_LIB
+    getchar();
+#endif //WIN32
 }
 
 void read_textfile_to_vector(char filename[]){
     FILE * f;
     f = fopen(filename, "rb");
+    if (f == NULL){
+        cout << "fail open file " << filename << endl;
+        return;
+    }
 
     int i=1;
-    char s[100];
-    while(!feof(f)){
-        fgets(s, 254,f);
-        i++;
-    }
-    fseek(f, 0, SEEK_SET);
-
-    int size = i-1;
-    char *res[size];
+    char **res;
     char *tmp;
-    for (i=0; i < size; i++){
-        tmp = (char *) malloc(256*sizeof(char));
-        fgets(tmp, 255, f);
-        res[i] = tmp;
-        //cout << res[i];
+    res = (char **) malloc(1 * sizeof(char *));
+    while(!feof(f)){
+        tmp = (char *) calloc(256, sizeof(char));
+        fgets(tmp, 256,f);
+        res[i-1] = tmp;
+        i++;
+        res = (char **) realloc(res, i * sizeof(char *));
     }
-    //cout << sizeof(res)/sizeof(res[0]);
+    int lines = i-2;
+    cout << "reading "<< lines<< " lines"<< endl;
 
-    vector<char *> v(res, res+sizeof(res)/sizeof(res[0]));
-    //cout << v[0];
+    vector<char *> v(res, res+lines); // load all lines in vector
+
+    // print vector.
     for (i=0; i<v.size();i++){
         cout << v[i];
 

@@ -1,6 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <stdexcept>
+#ifdef _WIN32_C_LIB
+    #include <cstdio>
+#endif //WIN32
 
 #define get_size_array(array) sizeof(array) / sizeof(array[0])
 using namespace std;
@@ -12,6 +15,9 @@ int unsorted_array[] = {3, 23, 6, 7, 9, 0, 48, 3, 4, 5, 7, 8};
 int main(int argc, char *argv[])
 {
     part_2();
+#ifdef _WIN32_C_LIB
+    getchar();
+#endif //WIN32
     return 0;
 }
 
