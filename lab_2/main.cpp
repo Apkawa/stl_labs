@@ -9,6 +9,43 @@ using namespace std;
 
 string read_file(char * filename);
 
+string str_clean(string str);
+
+int main(int argc, char *argv[])
+{
+    char * filename = "input.txt";
+    string s = read_file(filename);
+    //cout << s;
+    s = str_clean(s);
+    //cout << s;
+
+    return EXIT_SUCCESS;
+}
+
+string read_file(char * filename){
+    FILE * f;
+
+    char * f_buf;
+    long int f_size;
+
+    f = fopen(filename, "r");
+    if (f == NULL){
+        cout << "fail open file "<< filename;
+        return NULL;
+    }
+    fseek(f, 0, SEEK_END);
+    f_size = ftell(f);
+    rewind(f);
+    f_buf = (char *) malloc(f_size * sizeof(char));
+    if (fread(f_buf, sizeof(char), f_size, f) != f_size){
+        cout << "read file failure" << endl;
+    }
+    fclose(f);
+    string content(f_buf, f_size);
+    free(f_buf);
+    return content;
+}
+
 string str_clean(string str){
     int pos;
 
@@ -58,39 +95,4 @@ string str_clean(string str){
 
     //cout << str;
     return str;
-}
-
-int main(int argc, char *argv[])
-{
-    char * filename = "input.txt";
-    string s = read_file(filename);
-    cout << s;
-    s = str_clean(s);
-    cout << s;
-
-    return EXIT_SUCCESS;
-}
-
-string read_file(char * filename){
-    FILE * f;
-
-    char * f_buf;
-    long int f_size;
-
-    f = fopen(filename, "r");
-    if (f == NULL){
-        cout << "fail open file "<< filename;
-        return NULL;
-    }
-    fseek(f, 0, SEEK_END);
-    f_size = ftell(f);
-    rewind(f);
-    f_buf = (char *) malloc(f_size * sizeof(char));
-    if (fread(f_buf, sizeof(char), f_size, f) != f_size){
-        cout << "read file failure" << endl;
-    }
-    fclose(f);
-    string content(f_buf, f_size);
-    free(f_buf);
-    return content;
 }
