@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 
 using namespace std;
@@ -11,6 +12,11 @@ string read_file(char * filename);
 
 string str_clean(string str);
 
+template <typename T> void print_vector(vector<T> v);
+
+void pretty_print(string str, int width);
+
+
 int main(int argc, char *argv[])
 {
     char * filename = "input.txt";
@@ -18,6 +24,7 @@ int main(int argc, char *argv[])
     //cout << s;
     s = str_clean(s);
     //cout << s;
+    pretty_print(s, 40);
 
     return EXIT_SUCCESS;
 }
@@ -47,8 +54,13 @@ string read_file(char * filename){
 }
 
 string str_clean(string str){
-    int pos;
+    /*
 
+     #equalient
+     >>> import re
+     >>> re.sub(r'[^\w\.\,\s]','', str)
+     */
+    int pos;
     char * not_other_space_char[] = {"\a","\b","\n","\t","\v","\r","\f", "  "};
     char * replace_word = "Vau!!!"; //bullshit
 
@@ -95,4 +107,48 @@ string str_clean(string str){
 
     //cout << str;
     return str;
+}
+
+template <typename T> void print_vector(vector<T> v){
+    int i;
+    for (i = 0; i < v.size(); ++i){
+        cout << v[i] <<"\n";
+    }
+}
+
+/*
+  * pretty print function
+  */
+void pretty_print(string str, int width){
+    vector<string> str_v;
+    int l_pos = 0;
+    int max_pos = str.size();
+    int start = 0;
+    int end = 0;
+    int line_width;
+    while (true){
+        start = l_pos;
+        line_width = width;
+        end = start+line_width+1;
+        while(line_width > 0){
+            if (end <= max_pos){
+                if (str.compare(start+line_width, 1, " ") == 1){
+                    line_width--;
+                } else {
+                    break;
+                }
+            } else {
+                break;
+            }
+        }
+        str_v.push_back(str.substr(start, line_width));
+        l_pos = start+line_width+1;
+        if (l_pos >= max_pos){
+            break;
+        }
+
+    }
+
+    print_vector<string>(str_v);
+
 }
