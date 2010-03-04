@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
 void part_6(void){
     int size_array[] = {5, 10, 25, 50, 100};
-    int i;
+    unsigned int i;
     for (i = 0; i < get_size_array(size_array); ++i){
         cout << "array size: "<< size_array[i]<< endl;
         double *da;
@@ -52,7 +52,7 @@ template <typename T> void print_array(T array[], int size) {
 }
 
 template <typename T> void print_vector(vector<T> v){
-    int i;
+    unsigned int i;
     cout << "[ ";
     for (i = 0; i < v.size(); ++i){
         cout << v[i] <<", ";
@@ -73,7 +73,7 @@ void full_random(double *array, int size){
 }
 
 template <class T> vector<T> sort_vector(vector<T> v){
-    int i;
+    unsigned int i;
     bool t = true;
     T temp;
     while (t){

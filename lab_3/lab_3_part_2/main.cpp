@@ -10,7 +10,6 @@ void print_list(list<int> v);
 
 list<int> random_range(int size, int a, int b);
 
-void __rec(list<int>::iterator iter, list<int>::reverse_iterator rev_iter);
 void special_print(list<int> l);
 
 void lab_3_part_2(void);
@@ -28,7 +27,7 @@ void lab_3_part_2(void){
     // Generate <list> from rand int 1 to 20
     // test generate list
     int size_array[] = {0, 1, 2, 3, 4, 5, 7, 14};
-    for (int i=0; i<sizeof(size_array)/sizeof(size_array[0]);i++) {
+    for (int i=0; i<sizeof(size_array)/sizeof(size_array[0]); i++) {
         list<int> l = random_range(size_array[i], 1, 20);
         print_list(l);
         l.clear();
@@ -73,10 +72,6 @@ list<int> random_range(int size, int a, int b){
     //print_list(l);
     return l;
 }
-void __rec(list<int>::iterator iter, list<int>::reverse_iterator rev_iter){
-    cout << *iter << " " << *rev_iter << ", ";
-    __rec(iter++, rev_iter++);
-}
 
 void special_print(list<int> l){
     // not work on num % 2 != 0
@@ -89,7 +84,4 @@ void special_print(list<int> l){
         tmp.push_back(*rev_iter);
     }
     print_list(tmp);
-
-
-
 }
