@@ -19,7 +19,7 @@ void pretty_print(string str, int width);
 
 int main(int argc, char *argv[])
 {
-    char * filename = "input.txt";
+    char filename[] = "input.txt";
     string s = read_file(filename);
     //cout << s;
     s = str_clean(s);
@@ -59,12 +59,18 @@ string str_clean(string str){
      #equalient
      >>> import re
      >>> re.sub(r'[^\w\.\,\s]','', str)
+     or
+     str.remove(QRegExp("[^\\w\ \,\.]"));
+     str.replace(QRegExp("[\\s]{2,}"),"\\s");
+     or
+     str = str.simplified();
      */
-    int pos;
+    unsigned int pos;
+    unsigned int i;
     char * not_other_space_char[] = {"\a","\b","\n","\t","\v","\r","\f", "  "};
-    char * replace_word = "Vau!!!"; //bullshit
+    char replace_word[] = "Vau!!!"; //bullshit
 
-    for (int i=0; i< sizeof(not_other_space_char)/sizeof(not_other_space_char[0]); ++i){
+    for (i=0; i < sizeof(not_other_space_char)/sizeof(not_other_space_char[0]); ++i){
         while( (pos = str.find(not_other_space_char[i])) != str.npos ){
             str.erase(pos,1);
         }
@@ -80,23 +86,29 @@ string str_clean(string str){
         }
     }
 
+    // equal str.replace(QRegExp("[\\w]{10,}"), replace_word);
     int pre_pos = 0;
     int word_size = 0;
+    int dot;
     bool _loop = true;
 
     while (_loop){
         pos = str.find(" ", pos+1 );
         if (pos ==  str.npos) {
             _loop = false;
-            pos = str.length()-1;
+            pos = str.length();
         }
 
         if( pos != 0){
             word_size = pos-1 - pre_pos;
-            if ((str.compare(pos-1, 1, ".") == 0)||(str.compare(pos-1, 1, ",") == 0)){
+            if ((str.compare(pos-1, 1, ",") == 0)||((dot=str.compare(pos-1, 1, ".")) == 0)){
                 word_size--;
             }
+
             if (word_size > 10){
+                if (dot == 0){
+                    word_size++;
+                }
                 str.replace(pre_pos+1, word_size, replace_word);
             }
 
@@ -110,7 +122,7 @@ string str_clean(string str){
 }
 
 template <typename T> void print_vector(vector<T> v){
-    int i;
+    unsigned int i;
     for (i = 0; i < v.size(); ++i){
         cout << v[i] <<"\n";
     }
@@ -121,34 +133,30 @@ template <typename T> void print_vector(vector<T> v){
   */
 void pretty_print(string str, int width){
     vector<string> str_v;
-    int l_pos = 0;
-    int max_pos = str.size();
-    int start = 0;
-    int end = 0;
-    int line_width;
+    unsigned int last_pos = 0;
+    unsigned int max_pos = str.size();
+    unsigned int end = 0;
+    unsigned int offset = 0;
+    unsigned int line_width;
+
     while (true){
-        start = l_pos;
         line_width = width;
-        end = start+line_width+1;
-        while(line_width > 0){
-            if (end <= max_pos){
-                if (str.compare(start+line_width, 1, " ") == 1){
-                    line_width--;
-                } else {
-                    break;
-                }
-            } else {
-                break;
+        end = last_pos+line_width;
+
+        if (!(last_pos+line_width >= max_pos)) {
+            offset = str.rfind(" ", end);
+            if (offset != str.npos){
+                line_width = line_width - (end - offset);
             }
         }
-        str_v.push_back(str.substr(start, line_width));
-        l_pos = start+line_width+1;
-        if (l_pos >= max_pos){
+
+        str_v.push_back(str.substr(last_pos + 1, line_width));
+        last_pos = last_pos + line_width;
+        if (last_pos >= max_pos){
             break;
         }
 
     }
-
     print_vector<string>(str_v);
 
 }
