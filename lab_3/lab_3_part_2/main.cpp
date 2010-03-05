@@ -44,7 +44,7 @@ void lab_3_part_2(void){
 }
 
 template <typename T> T randint(T a, T b){
-    return ((b-a)*((T)rand()/RAND_MAX))+a;
+    return ((b-a)*((T)random()/RAND_MAX))+a;
 }
 
 void print_list(list<int> v){
