@@ -1,4 +1,4 @@
- This document is for Djangos development. version, which can be significantly different from previous releases. Get old docs here: 1.1, 1.0
+ This document is for Djangos development, version, which can be significantly different from previous releases. Get old docs here: 1.1, 1.0
 Django at a glance
 s                 f    f               f
 Because Django was developed in a fast-paced newsroom environment, it was designed to make common Web-development tasks fast and easy. Heres an informal overview of how to write a database-driven Web app with Django.

@@ -26,6 +26,10 @@ int main(int argc, char *argv[])
     //cout << s;
     pretty_print(s, 40);
 
+#ifdef _WIN32_C_LIB
+    getchar();
+#endif //WIN32
+
     return EXIT_SUCCESS;
 }
 

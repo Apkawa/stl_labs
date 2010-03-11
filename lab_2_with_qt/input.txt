@@ -6,4 +6,4 @@ Because Django was developed in a fast-paced newsroom environment, it was design
 The goal of this document is to give you enough technical specifics to understand how Django works, but this isnt intended to be a tutorial or reference – but weve got both! When youre ready to start a project, you can start with the tutorial or dive right into more detailed documentation.
 
 
-   Lil,eff ,efef , eerfgfhgffgguyguygygy.
+Lil,eff ,efef , eerfgfhgffgguyguygygy.

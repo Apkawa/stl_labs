@@ -1,18 +1,9 @@
 #include <iostream>
 #include <list>
 #include <cstdlib>
-
+#include "main.h"
 using namespace std;
 
-template <typename T> T randint(T a, T b);
-
-void print_list(list<int> v);
-
-list<int> random_range(int size, int a, int b);
-
-void special_print(list<int> l);
-
-void lab_3_part_2(void);
 
 int main(int argc, char *argv[])
 {
@@ -25,36 +16,36 @@ int main(int argc, char *argv[])
 
 void lab_3_part_2(void){
     // Generate <list> from rand int 1 to 20
-    // test generate list
+    cout<<"test generate list"<< endl;
     int size_array[] = {0, 1, 2, 3, 4, 5, 7, 14};
     for (int i=0; i<sizeof(size_array)/sizeof(size_array[0]); i++) {
         list<int> l = random_range(size_array[i], 1, 20);
         print_list(l);
         l.clear();
     }
-
-
+    cout << endl<< "create task random list" << endl;
     list<int> l = random_range(14, 1, 20);
+
     print_list(l);
     // print list as
     // 12345678 -> 18273645
+    cout << "special print"<< endl;
     special_print(l);
 
 
 }
 
 template <typename T> T randint(T a, T b){
-    return ((b-a)*((T)random()/RAND_MAX))+a;
+    return ((b-a)*((T)rand()/RAND_MAX))+a;
 }
 
 void print_list(list<int> v){
     list<int>::iterator iter;
-    int i;
     cout << "[ ";
-    for (i = 0, iter=v.begin(); i < v.size(); ++i, ++iter){
+    for (iter=v.begin(); iter != v.end(); ++iter){
         cout << *iter <<", ";
     }
-    cout << "] len: "<< i << endl;
+    cout << "] len: "<< v.size() << endl;
 
 }
 

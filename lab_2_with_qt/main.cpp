@@ -57,8 +57,8 @@ void pretty_print(QString str, int width){
 int main(int argc, char *argv[])
 {
     QString s = read_file("input.txt");
-    qDebug() << s;
+    //qDebug() << s;
     s = str_clean(s);
-    qDebug() << s;
+    //qDebug() << s;
     pretty_print(s, 40);
 }
