@@ -4,22 +4,46 @@
 #include <string>
 #include <iostream>
 
-typedef enum {
+typedef enum
+{
     LOW,
     NORMAL,
     HIGH } ElementPriority;
 
-struct QueueElement {
+struct QueueElement
+{
     ElementPriority priority;
     std::string name;
-    friend bool operator<(const QueueElement &left_e, const QueueElement &right_e){
-        return (left_e.priority < right_e.priority);
+    QueueElement(std::string _name, ElementPriority _priority)
+    {
+        name=_name;
+        priority=_priority;
     }
+    QueueElement(char _name[], ElementPriority _priority)
+    {
+        name = std::string(_name),
+        priority = _priority;
+    }
+    friend bool operator<(const QueueElement &leftel, const QueueElement &rightel)
+    {
+        return (leftel.priority < rightel.priority);
+    }
+    friend std::ostream& operator<<( std::ostream &ostr, const QueueElement &L )
+    {
+        ostr << "Q("<< L.name << "," << L.priority << ")";
+        return ostr;
+    }
+
+//    friend bool operator<(const QueueElement &left_e, const QueueElement &right_e)
+//    {
+//        return (left_e.priority < right_e.priority);
+//    }
 
 };
 
 typedef std::list<QueueElement> __queue_type;
 typedef std::list<QueueElement>::iterator __queue_iterator_type;
+typedef std::list<QueueElement>::reverse_iterator __queue_reverse_iterator_type;
 class QueueWithPriority
 {
 private:
@@ -27,20 +51,18 @@ private:
 public:
     QueueWithPriority(void);
     ~QueueWithPriority(void);
-    void putElement(const QueueElement &element, ElementPriority priority);
+    void putElement(const QueueElement &element);
+    void putElement(const char name[], ElementPriority priority);
     QueueElement getElement(void);
     void accelerate(void);
-    void print_queue(void);
+    int size(void){
+        return __queue.size();
+    }
 
-    // overloaded
-//    friend ostream& operator<<(ostream &ostr, const QueueWithPriority &obj)
+    void print_queue(void);
 
 };
 
-//ostream& QueueWithPriority::operator<<(ostream &ostr, const QueueWithPriority &obj){
-//    ostr<<obj;
-//    return ostr;
-//}
 
 
 #endif // QUEUEWITHPRIORITY_H
