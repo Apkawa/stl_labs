@@ -1,5 +1,6 @@
 #ifndef QUEUEWITHPRIORITY_H
 #define QUEUEWITHPRIORITY_H
+//#define _HAS_ITERATOR_DEBUGGING 0
 #include <list>
 #include <string>
 #include <iostream>

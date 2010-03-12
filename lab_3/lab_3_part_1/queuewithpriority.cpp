@@ -66,7 +66,7 @@ void QueueWithPriority::accelerate()
     __queue_iterator_type first_iter;
     bool is_low = false;
 
-    for(iter=__queue.end()--;; iter--) {
+    for(iter=__queue.end()--;; --iter) {
         if (iter->priority == LOW)
         {
             iter->priority = HIGH;
