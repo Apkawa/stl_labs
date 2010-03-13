@@ -55,9 +55,11 @@ void special_print(list<int> l){
 
     for (;; ++iter, ++rev_iter){
         tmp.push_back(*iter);
+
         if(tmp.size() >= l.size()){
             break;
         }
+
         tmp.push_back(*rev_iter);
     }
     print_list(tmp);

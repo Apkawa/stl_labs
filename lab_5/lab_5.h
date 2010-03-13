@@ -13,10 +13,12 @@ typedef struct
     string str;
 } DataStruct;
 
-void print(vector<DataStruct> v);
+typedef vector<DataStruct> container_type;
+
+void print(container_type v);
 
 DataStruct fill(string *table, int size);
 
-vector<DataStruct> sort(vector<DataStruct> v);
+container_type sort(container_type v);
 
 #endif // LAB_5_H

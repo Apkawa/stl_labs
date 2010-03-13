@@ -5,7 +5,7 @@ void part_1(int unsorted_array[], int size){
     int i;
 
     cout << "write from array\n";
-    for (i = 0; i <= size; ++i){
+    for (i = 0; i < size; ++i){
         v.push_back(unsorted_array[i]);
         cout << v[i] << ",";
     }

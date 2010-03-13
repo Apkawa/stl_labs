@@ -26,7 +26,7 @@ void QueueWithPriority::putElement(const QueueElement &element)
             check = iter->priority - element.priority;
             if (check == -1)
             {
-                __queue.insert(iter--, element);
+                __queue.insert(iter, element);
                 insert = true;
                 break;
             }
@@ -66,7 +66,8 @@ void QueueWithPriority::accelerate()
     __queue_iterator_type first_iter;
     bool is_low = false;
 
-    for(iter=__queue.end()--;; --iter) {
+    for(iter=--__queue.end();; iter--) 
+    {
         if (iter->priority == LOW)
         {
             iter->priority = HIGH;
@@ -77,19 +78,20 @@ void QueueWithPriority::accelerate()
         {
             break;
         }
-    }
+    }// END for
+
     if (is_low)
     {
-    for (iter = __queue.begin(); iter!=__queue.end(); iter++)
+        for (iter = __queue.begin(); iter != __queue.end(); iter++)
         {
             if (iter->priority == NORMAL)
             {
-                __queue.splice(iter--, __queue, first_iter, __queue.end()--);
+                __queue.splice(iter, __queue, first_iter, __queue.end());
                 break;
-            }
+            }// END IF
         }
-    }
-}
+    }// END IF is_low
+} // END accelerate
 
 void QueueWithPriority::print_queue()
 {

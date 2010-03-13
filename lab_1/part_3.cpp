@@ -3,7 +3,7 @@ void part_3(int * unsorted_array, int size){
     vector<int> v;
     int i;
     cout << endl << "write from array" << endl;
-    for (i = 0; i <= size; ++i){
+    for (i = 0; i < size; ++i){
         v.push_back(unsorted_array[i]);
         cout << v[i] << ",";
     }
@@ -11,18 +11,23 @@ void part_3(int * unsorted_array, int size){
 
     // paste sort method Q(n^2)
     vector<int>::iterator iter;
-    int key;
-    int j;
-    for (i = 0, iter=v.begin(); iter < v.end(); i++, iter++){
-        key = *iter;
-        j = i - 1;
-        while(j >= 0 & *(v.begin()+j) > key) {
-            *(v.begin()+(j+1)) = *(v.begin()+j);
-            j--;
-        }
-        *(v.begin()+(j+1)) = key;
-
-    }
+	bool flag = true;
+	int tmp;
+	while(flag)
+	{
+		flag = false;
+		for (iter = v.begin(); iter < --v.end(); iter++)
+		{
+			if ( *iter > *(iter+1) )
+			{
+                // swap
+				tmp = *iter;
+				*iter = *(iter+1);
+				*(iter+1) = tmp;
+				flag = true;
+			}
+		}
+	}
     //end sort
 
     for (i=0; i < v.size(); ++i) {

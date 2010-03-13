@@ -1,3 +1,15 @@
+/** @mainpage stl_lab
+  @section labs Список лабораторных
+  @subpage lab_1\n
+  @subpage lab_2\n
+  @subpage lab_3\n
+  @subpage lab_4\n
+  @subpage lab_5\n
+
+  @version 0.4-1
+  @date 2010-03-14
+  @author apkawa <me@apkawa.org>
+  */
 #ifndef LAB_HELPER_H
 #define LAB_HELPER_H
 
