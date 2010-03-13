@@ -1,6 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include <list>
+#include <iostream>
+#include <list>
+#include <cstdlib>
 
 using namespace std;
 

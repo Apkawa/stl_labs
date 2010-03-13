@@ -3,7 +3,7 @@
 void part_6(void){
     int size_array[] = {5, 10, 25, 50, 100};
     unsigned int i;
-    for (i = 0; i < get_size_array(size_array); ++i){
+    for (i = 0; i <= get_size_array(size_array); ++i){
         cout << "array size: "<< size_array[i]<< endl;
         double *da;
         da = (double *) calloc(size_array[i], sizeof(double));

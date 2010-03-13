@@ -31,7 +31,19 @@ struct QueueElement
     }
     friend std::ostream& operator<<( std::ostream &ostr, const QueueElement &L )
     {
-        ostr << "Q("<< L.name << "," << L.priority << ")";
+        char *priority_name;
+        switch (L.priority)
+        {
+        case LOW: priority_name = "LOW";
+            break;
+        case NORMAL: priority_name = "NORMAL";
+            break;
+        case HIGH: priority_name = "HIGH";
+            break;
+        default: priority_name = "None";
+        }
+
+        ostr << "Q("<< L.name << "," << priority_name << ")";
         return ostr;
     }
 
