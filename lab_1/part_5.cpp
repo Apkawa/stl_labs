@@ -1,37 +1,19 @@
-#include <cstdio>
-#include <iostream>
-#include <vector>
-#include <iterator>
-#define DEBUG true
-using namespace std;
-
-void part_5(void);
-
-int main(int argc, char *argv[])
-{
-
-    part_5();
-
-#ifdef _WIN32_C_LIB
-    getchar();
-#endif //WIN32
-    return 0;
-}
+#include "part_5.h"
 
 void part_5(void){
     vector<int> vec;
-    cout << "Enter any number. 0 - exit\n";
+    cout << "Enter any number. 0 - exit."<< endl;
     if (!DEBUG){
         int n;
         while(true){
             scanf("%d",&n);
             if (n == 0){
-                cout << "ZERO! Boky wa Lelush vi Britania!\n";
+                cout << "ZERO! Boky wa Lelush vi Britania!" << endl;
                 break;
             }
 
             vec.push_back(n);
-            cout << "Ok, entering number "<< n << "\n";
+            cout << "Ok, entering number "<< n << endl;
         }
     } else {
         int i;
@@ -63,7 +45,7 @@ void part_5(void){
             if (*iter % 3 == 0){
                 for (_i=0; _i < 3; ++_i){
                     iter = vec.insert(iter+1, 1);
-                    
+
                 }
             }
         }

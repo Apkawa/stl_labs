@@ -1,27 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <cstdlib>
-
-#define get_size_array(array) sizeof(array) / sizeof(array[0])
-using namespace std;
-
-template <typename T> void print_array(T array[], int size);
-template <typename T> void print_vector(vector<T> v);
-template <typename T> T rand_range(T a, T b);
-void full_random(double *array, int size);
-template <class T> vector<T> sort_vector(vector<T> v);
-
-void part_6(void);
-
-int main(int argc, char *argv[])
-{
-    part_6();
-#ifdef _WIN32_C_LIB
-    getchar();
-#endif //WIN32
-    return EXIT_SUCCESS;
-}
-
+#include "part_6.h"
 
 void part_6(void){
     int size_array[] = {5, 10, 25, 50, 100};

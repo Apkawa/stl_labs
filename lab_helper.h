@@ -1,12 +1,12 @@
 #ifndef LAB_HELPER_H
 #define LAB_HELPER_H
-#define get_size(array) sizeof(array)/sizeof(array[0])
+
 #include <string>
 #include <cstdio>
 #include <iostream>
 #include <fstream>
 
-
+#define get_size(array) sizeof(array)/sizeof(array[0])
 
 using namespace std;
 
@@ -55,6 +55,7 @@ int read_file(string arr[], char file[], int size)
 //        free(f_buf);
 //        return content;
 //    }
+
 void win32cmd(void){
 #ifdef _WIN32_C_LIB
 getchar();

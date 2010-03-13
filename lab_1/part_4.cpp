@@ -1,25 +1,10 @@
-#include "main.h"
-#include <cstdio>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
-using namespace std;
+#include "part_4.h"
 
-int main(void) {
-
-    read_textfile_to_vector("input.txt");
-#ifdef _WIN32_C_LIB
-    getchar();
-#endif //WIN32
-    return EXIT_SUCCESS;
-}
-
-
-void read_textfile_to_vector(char filename[]){
+void part_4(char filename[]){
     FILE * f;
     f = fopen(filename, "rb");
     if (f == NULL){
-        cout << "fail open file " << filename << endl;
+        cout << "fail open file: " << filename << endl;
         return;
     }
 
@@ -37,7 +22,9 @@ void read_textfile_to_vector(char filename[]){
     int lines = i-2;
     cout << "reading "<< lines<< " lines"<< endl;
 
+    //
     vector<char *> v(res, res+lines); // load all lines in vector
+    //
 
     // print vector.
     for (i=0; i<v.size();i++){
