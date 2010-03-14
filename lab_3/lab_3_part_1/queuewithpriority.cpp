@@ -1,13 +1,52 @@
+/**
+
+*/
 #include "queuewithpriority.h"
 #include <iostream>
 using namespace std;
 
-// Constructor
+
+QueueElement::QueueElement(string _name, ElementPriority _priority)
+{
+    name=_name;
+    priority=_priority;
+}
+
+QueueElement::QueueElement(char _name[], ElementPriority _priority)
+{
+    name = string(_name),
+    priority = _priority;
+}
+
+bool operator<(const QueueElement &leftel, const QueueElement &rightel)
+{
+    return (leftel.priority < rightel.priority);
+}
+
+ostream& operator<<( ostream &ostr, const QueueElement &L )
+{
+    char *priority_name;
+    switch (L.priority)
+    {
+    case LOW: priority_name = "LOW";
+        break;
+    case NORMAL: priority_name = "NORMAL";
+        break;
+    case HIGH: priority_name = "HIGH";
+        break;
+    default: priority_name = "None";
+    }
+
+    ostr << "Q("<< L.name << "," << priority_name << ")";
+    return ostr;
+}
+
+/// Constructor
 QueueWithPriority::QueueWithPriority()
 {
 
 }
-// Destructor
+/// Destructor
 QueueWithPriority::~QueueWithPriority()
 {
 
@@ -18,7 +57,6 @@ void QueueWithPriority::putElement(const QueueElement &element)
     __queue_iterator_type iter;
     int check;
     bool insert = false;
-
     if ((!__queue.empty()) & (element.priority != LOW))
     {
         for(iter=__queue.begin(); iter != __queue.end(); iter++)
@@ -30,7 +68,6 @@ void QueueWithPriority::putElement(const QueueElement &element)
                 insert = true;
                 break;
             }
-
         }
         if (!insert)
         {
@@ -66,7 +103,7 @@ void QueueWithPriority::accelerate()
     __queue_iterator_type first_iter;
     bool is_low = false;
 
-    for(iter=--__queue.end();; iter--) 
+    for(iter=--__queue.end();; iter--)
     {
         if (iter->priority == LOW)
         {
@@ -103,3 +140,4 @@ void QueueWithPriority::print_queue()
     }
     cout << "]" << endl;
 }
+/** */

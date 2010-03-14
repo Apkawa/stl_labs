@@ -1,5 +1,7 @@
-/** @page lab_3 lab 3: list-deque
-
+/** @defgroup lab_3 Lab 3
+  @{ */
+/**
+@page lab_3 Lab 3: list-deque
 @section lab_3_part_1 Часть 1
 Ниже приведен интерфейс класса очереди с приоритетами, который функционирует следующим образом.
 
@@ -58,7 +60,8 @@ class QueueWithPriority
 @pre 1 8 2 7 3 6 4 5
 
 Подсказка: можно использовать рекурсию и двунаправленные итераторы
-  */
+*/
+/** @} */
 #include <iostream>
 #include <cstdlib>
 
@@ -93,8 +96,8 @@ int main(void)
     cout << queue.getElement() << endl;
     cout << queue.getElement() << endl;
 
-    //cout << "============ Part 2 ============="<< endl;
-    //lab_3_part_2();
+    cout << "============ Part 2 ============="<< endl;
+    lab_3_part_2();
     win32cmd();
     return EXIT_SUCCESS;
 }

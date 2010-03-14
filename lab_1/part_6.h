@@ -1,3 +1,8 @@
+/**
+  @defgroup lab_1_part_6 Part 6
+  @ingroup lab_1
+  @{
+*/
 #ifndef PART_6_H
 #define PART_6_H
 #include <iostream>
@@ -24,3 +29,4 @@ void part_6(void);
 
 
 #endif // PART_6_H
+/// @}

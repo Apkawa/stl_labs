@@ -1,3 +1,8 @@
+/**
+  @defgroup lab_3_part_2 Part 2
+  @ingroup lab_3
+  @{
+  */
 #include "lab_3_part_2.h"
 
 void lab_3_part_2(void){
@@ -64,3 +69,4 @@ void special_print(list<int> l){
     }
     print_list(tmp);
 }
+/// @}

@@ -5,7 +5,8 @@
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-
+/** @addtogroup lab_5
+  @{ */
 typedef struct
 {
     int key1;
@@ -15,10 +16,15 @@ typedef struct
 
 typedef vector<DataStruct> container_type;
 
-void print(container_type v);
+class DataStructManager
+{
+private:
+    container_type __container;
+public:
+    DataStructManager(string *table, int size);
+    void sort(void);
+    void print(void);
+};
 
-DataStruct fill(string *table, int size);
-
-container_type sort(container_type v);
-
+/// @}
 #endif // LAB_5_H

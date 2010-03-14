@@ -1,3 +1,5 @@
+/** @defgroup lab_5 Lab 5
+  @{ */
 /** @page lab_5 Lab 5: algoritm-sort
 Выполнить ВСЕ задания
 
@@ -20,6 +22,8 @@ typedef struct
 } DataStruct;
 @endcode
   */
+
+/// @}
 #include "lab_5.h"
 #include "../lab_helper.h"
 
@@ -27,20 +31,15 @@ typedef struct
 
 int main(void)
 {
-    vector<DataStruct> data;
-    DataStruct tmp;
+
     string arr[SIZE];
 
     read_file(arr, "input.txt", SIZE);
-    for (int i = 0; i < get_size(arr); i++)
-    {
-        tmp = fill(arr, SIZE);
-        data.push_back(tmp);
-    }
-    print(data);
+    DataStructManager dm(arr, SIZE);
+    dm.print();
     cout << endl << endl <<"+=================Sorting================+"<< endl << endl;
-    data = sort(data);
-    print(data);
+    dm.sort();
+    dm.print();
 
     win32cmd();
     return EXIT_SUCCESS;

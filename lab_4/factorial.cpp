@@ -3,6 +3,11 @@
 #include <cstdlib>
 using namespace std;
 
+Factorial::Factorial(void)
+{
+    Factorial(10);
+}
+
 Factorial::Factorial(int n)
 {
     container_iterator_type v;

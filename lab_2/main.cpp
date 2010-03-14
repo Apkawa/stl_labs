@@ -1,3 +1,7 @@
+/**
+  @defgroup lab_2 Lab 2
+  @{
+*/
 /** @page lab_2 Lab 2: string
 Разработать программу, которая должна сделать следующее:
 -# Прочитать содержимое текстового файла. Файл может содержать:
@@ -28,12 +32,23 @@
 
 using namespace std;
 
+/// read file function
 string read_file(char * filename);
 
+/**
+  Cleaned string of [^\w\ \,\.] and replace [\s]{2,} => \s
+  replace word [\w]{10,} => "Vau!!!"
+  @return cleaned string \c string
+  */
 string str_clean(string str);
 
+/// Print vercor template function
 template <typename T> void print_vector(vector<T> v);
 
+/**
+  * pretty print function
+  * @param width an \c int for set width print
+  */
 void pretty_print(string str, int width);
 
 
@@ -145,6 +160,7 @@ string str_clean(string str){
     return str;
 }
 
+
 template <typename T> void print_vector(vector<T> v){
     unsigned int i;
     for (i = 0; i < v.size(); ++i){
@@ -152,9 +168,7 @@ template <typename T> void print_vector(vector<T> v){
     }
 }
 
-/*
-  * pretty print function
-  */
+
 void pretty_print(string str, int width){
     vector<string> str_v;
     unsigned int last_pos = 0;
@@ -184,3 +198,4 @@ void pretty_print(string str, int width){
     print_vector<string>(str_v);
 
 }
+/// @}
